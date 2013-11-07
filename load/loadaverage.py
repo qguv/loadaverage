@@ -3,7 +3,15 @@
 import subprocess, re, argparse
 
 # Getting number of cores
-cores = int(subprocess.check_output(['sysctl', '-n', 'hw.ncpu']))
+try:
+    cores = int(subprocess.check_output(['sysctl', '-n', 'hw.ncpu']))
+except subprocess.CalledProcessError:
+    try:
+        cores = int(subprocess.check_output(['nproc']))
+    except subprocess.CalledProcessError:
+        raise subprocess.CalledProcessError('your system is not yet supported')
+    
+
 
 # Getting output from system 'uptime' command for load averages
 uptimeOutput = str(subprocess.check_output(['uptime']))
