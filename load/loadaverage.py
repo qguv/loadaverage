@@ -4,21 +4,19 @@ import subprocess, re, argparse
 
 # Getting number of cores
 try:
-    cores = int(subprocess.check_output(['sysctl', '-n', 'hw.ncpu']))
+    cores = int(subprocess.check_output(['nproc']))
 except subprocess.CalledProcessError:
     try:
-        cores = int(subprocess.check_output(['nproc']))
-    except subprocess.CalledProcessError:
+        cores = int(subprocess.check_output(['sysctl', '-n', 'hw.ncpu']))
+    except:
         raise subprocess.CalledProcessError('your system is not yet supported')
-    
-
 
 # Getting output from system 'uptime' command for load averages
 uptimeOutput = str(subprocess.check_output(['uptime']))
 
 # Builds a regex which looks for a group of three floating-point numbers,
 # optionally separated by ' ' and/or ','.
-expression = r'([0-9]+\.[0-9]{2} *,*){3}'
+expression = r'([0-9]+\.[0-9]{2},* *){3}'
 uptimeOutputSearch = re.search(expression, uptimeOutput)
 
 loadAveragesRaw = uptimeOutputSearch.group(0)
