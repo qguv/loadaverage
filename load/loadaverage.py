@@ -5,7 +5,7 @@ import subprocess, re, argparse
 # Getting number of cores
 try:
     cores = int(subprocess.check_output(['nproc']))
-except subprocess.CalledProcessError:
+except ( subprocess.CalledProcessError, FileNotFoundError ):
     try:
         cores = int(subprocess.check_output(['sysctl', '-n', 'hw.ncpu']))
     except:
