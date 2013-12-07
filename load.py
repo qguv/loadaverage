@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# rpcalc exceution script
-# for more info, see github.com/qguv/rpcalc
+# loadaverage exceution script
+# for more info, see github.com/qguv/loadaverage
 
 import sys
 import load
