@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# loadaverage exceution script
+# loadaverage execution script
 # for more info, see github.com/qguv/loadaverage
 
 import sys
