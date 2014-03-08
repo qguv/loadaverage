@@ -15,7 +15,7 @@ Installation is painless.
 
 Try:
 
-    git pull https://github.com/qguv/loadaverage.git loadaverage-git
+    git clone https://github.com/qguv/loadaverage.git loadaverage-git
     cd loadaverage-git
     python3 setup.py install
     cd ..
