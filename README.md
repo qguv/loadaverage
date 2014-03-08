@@ -17,7 +17,7 @@ Try:
 
     git clone https://github.com/qguv/loadaverage.git loadaverage-git
     cd loadaverage-git
-    python3 setup.py install
+    python3 setup.py install --prefix=/usr/local
     cd ..
     rm -rf loadaverage-git
 
